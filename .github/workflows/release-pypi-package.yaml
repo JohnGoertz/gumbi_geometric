@@ -23,7 +23,7 @@ env:
 jobs:
   deploy-package:
     runs-on: ubuntu-latest
-    name: ${{ github.event_name == "pull_request" && "(Dry Run) " || "" }}Publish Python Package to PyPI
+    name: ${{ github.event_name == 'pull_request' && "(Dry Run) " || "" }}Publish Python Package to PyPI
     permissions:
       id-token: write
       contents: write
@@ -51,7 +51,7 @@ jobs:
         with:
           pixi-version: latest
           cache: true
-          cache-write: ${{ github.event_name == "push" }}
+          cache-write: ${{ github.event_name == 'push' }}
 
       - name: Set up Python
         run: |
