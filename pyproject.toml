@@ -52,7 +52,7 @@ testpaths = [
 [tool.isort]
 profile = "black"
 
-[tool.ruff]
+[tool.lint]
 # See https://docs.astral.sh/ruff/rules/ for a list of rules.
 # See https://docs.astral.sh/ruff/configuration/#using-pyprojecttoml for configuration documentation
 select = ["E", "F", "I"]
@@ -63,6 +63,9 @@ include-package-data = true
 [tool.setuptools.packages.find]
 where = ["."]
 namespaces = false
+
+[tool.jupytext.formats]
+"docs/notebooks/" = "ipynb,py:light"
 
 [project]
 name = "gumbi_geometric"
@@ -76,7 +79,12 @@ dependencies = [
     "pyprojroot",
     "scipy",
     "seaborn",
-    "python-dotenv", "botorch>=0.14.0,<0.15", "geometric-kernels>=0.3,<0.4", "vsup>=0.1.0,<0.2", "networkx>=3.5,<4", "nxviz>=0.7.6,<0.8",
+    "python-dotenv",
+    "botorch>=0.14.0,<0.15",
+    "geometric-kernels>=0.3,<0.4",
+    "vsup>=0.1.0,<0.2",
+    "networkx>=3.5,<4",
+    "nxviz>=0.7.6,<0.8",
 ]
 readme = "README.md"
 
@@ -144,3 +152,6 @@ default = { features = ["tests", "devtools", "notebook", "setup"] }
 docs = { features = ["docs"] }
 tests = { features = ["tests", "setup"] }
 cuda = { features = ["tests", "devtools", "notebook", "setup", "cuda"] }
+
+[tool.pixi.dependencies]
+isort = ">=6.0.1,<7"
